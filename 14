@@ -1,0 +1,21 @@
+import pandas as pd
+
+# Sample data
+data = {
+    '1': [2, 3, 4, 7],
+    '2': [5, 6, 9, 5],
+    '3': [8, 12, 1, 11]
+}
+
+# Create a DataFrame
+df = pd.DataFrame(data)
+
+# Display the original DataFrame
+print("Original DataFrame:")
+print(df)
+
+# Count the number of columns
+num_columns = len(df.columns)
+
+# Display the number of columns
+print("\nNumber of columns:", num_columns)

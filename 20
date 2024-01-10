@@ -1,0 +1,18 @@
+
+import numpy as np
+
+# Create two NumPy arrays with different shapes
+array1 = np.array(['Python', 'C#', 'NumPy'])
+array2 = np.array(['PHP', 'US', 'C++'])
+
+# Combine the last element of the first array with the first element of the second array
+combined_array = np.concatenate([array1[:-1], array2[0:1], array1[-1:]])
+
+# Display the original arrays
+print("Original arrays:")
+print(array1)
+print(array2)
+
+# Display the combined array
+print("After Combining:")
+print(combined_array)

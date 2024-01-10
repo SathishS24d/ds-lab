@@ -1,0 +1,42 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Reading data from a text file
+text_file_path = 'iris.txt'
+iris_text_df = pd.read_csv(text_file_path, header=None, names=['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class'])
+print("Iris Data from Text File:")
+print(iris_text_df.head())
+
+# Reading data from an Excel file
+excel_file_path = 'iris.xlsx'
+iris_excel_df = pd.read_excel(excel_file_path, sheet_name='Sheet1')
+print("\nIris Data from Excel:")
+print(iris_excel_df.head())
+
+# Reading data from the web
+url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+iris_web_df = pd.read_csv(url, header=None, names=['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class'])
+print("\nIris Data from the Web:")
+print(iris_web_df.head())
+
+# Descriptive analytics
+print("\nDescriptive Analytics:")
+print(iris_text_df.describe())
+
+# Correlation matrix
+correlation_matrix = iris_text_df.corr()
+print("\nCorrelation Matrix:")
+print(correlation_matrix)
+
+# Boxplot
+plt.figure(figsize=(10, 8))
+sns.boxplot(x='class', y='sepal_length', data=iris_text_df)
+plt.title('Boxplot of Sepal Length by Class')
+plt.show()
+
+# Pairplot
+sns.pairplot(iris_text_df, hue='class', markers=['o', 's', 'D'])
+plt.title('Pairplot of Iris Dataset')
+plt.show()

@@ -1,0 +1,20 @@
+import pandas as pd
+import numpy as np
+
+# Sample data
+data = {'X': [78, 85, 96, 80],
+        'Y': [84, 94, 89, 83],
+        'Z': [86, 97, 96, 72]}
+
+# Create a DataFrame from the sample data
+df = pd.DataFrame(data)
+
+# Define the powers array (e.g., [2, 3, 4] for squaring, cubing, and raising to the power of 4)
+powers = np.array([2, 3, 4])
+
+# Raise each element in the DataFrame to the corresponding power
+result = df.apply(lambda x: np.power(x, powers), axis=1)
+
+# Display the result
+print(result)
+

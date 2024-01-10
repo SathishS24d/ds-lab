@@ -1,0 +1,31 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Load the Iris dataset
+iris = sns.load_dataset('iris')
+
+# a) Normal values - Boxplot
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='species', y='sepal_length', data=iris)
+plt.title('Boxplot of Sepal Length for Each Species')
+plt.show()
+
+# b) Density and Contour Plots - Pairplot
+plt.figure(figsize=(12, 8))
+sns.pairplot(iris, hue='species', diag_kind='kde', markers=['o', 's', 'D'])
+plt.suptitle('Pairplot with Density Plots on Diagonal')
+plt.show()
+
+# c) Three-dimensional Plotting - 3D Scatter Plot
+fig = plt.figure(figsize=(10, 8))
+ax = fig.add_subplot(111, projection='3d')
+
+ax.scatter(iris['sepal_length'], iris['sepal_width'], iris['petal_length'], c=pd.Categorical(iris['species']).codes, marker='o', s=50)
+
+ax.set_xlabel('Sepal Length')
+ax.set_ylabel('Sepal Width')
+ax.set_zlabel('Petal Length')
+ax.set_title('3D Scatter Plot of Iris Data')
+plt.show()

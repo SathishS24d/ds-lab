@@ -1,0 +1,36 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Load the Pima Indians Diabetes dataset
+diabetes_df = pd.read_csv('diabetes.csv')
+
+# a) Correlation and scatter plots
+correlation_matrix = diabetes_df.corr()
+plt.figure(figsize=(10, 8))
+plt.matshow(correlation_matrix, cmap='viridis')
+plt.xticks(range(len(correlation_matrix.columns)), correlation_matrix.columns, rotation=45)
+plt.yticks(range(len(correlation_matrix.columns)), correlation_matrix.columns)
+plt.colorbar()
+plt.title('Correlation Matrix')
+plt.show()
+
+# Scatter plots
+scatter_plot = pd.plotting.scatter_matrix(diabetes_df, alpha=0.5, figsize=(12, 10))
+plt.suptitle('Scatter Plots')
+plt.show()
+
+# b) Histograms
+diabetes_df.hist(figsize=(12, 10))
+plt.suptitle('Histograms')
+plt.show()
+
+# c) Three-dimensional plotting
+fig_3d = plt.figure(figsize=(10, 8))
+ax_3d = fig_3d.add_subplot(111, projection='3d')
+ax_3d.scatter(diabetes_df['Glucose'], diabetes_df['BloodPressure'], diabetes_df['BMI'], c=diabetes_df['Outcome'], marker='o', s=50)
+ax_3d.set_xlabel('Glucose')
+ax_3d.set_ylabel('Blood Pressure')
+ax_3d.set_zlabel('BMI')
+ax_3d.set_title('Three-dimensional Plot')
+plt.show()

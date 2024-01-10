@@ -1,0 +1,33 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D  # for 3D plotting
+from sklearn.datasets import load_diabetes
+import pandas as pd
+
+# Load the Pima Indians Diabetes dataset (or replace it with your dataset)
+# For demonstration, I'm using a built-in dataset, so make sure to replace it with your actual data.
+diabetes = load_diabetes()
+diabetes_df = pd.DataFrame(data=diabetes.data, columns=[f'feature_{i}' for i in range(diabetes.data.shape[1])])
+
+# Assuming the target variable is 'target' (replace it with your actual target variable)
+diabetes_df['target'] = diabetes.target
+
+# a) Normal values - Boxplot
+sns.boxplot(data=diabetes_df, orient='h')
+plt.title('Boxplot of Features in Pima Indians Diabetes Dataset')
+plt.show()
+
+# b) Density and contour plots - Pairplot
+sns.pairplot(diabetes_df, vars=['feature_0', 'feature_1', 'feature_2', 'feature_3', 'target'], kind='kde')
+plt.suptitle('Density and Contour Plots of Features in Pima Indians Diabetes Dataset', y=1.02)
+plt.show()
+
+# c) Three-dimensional plotting - Scatter 3D
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(diabetes_df['feature_0'], diabetes_df['feature_1'], diabetes_df['target'], c='blue', marker='o')
+ax.set_xlabel('Feature 0')
+ax.set_ylabel('Feature 1')
+ax.set_zlabel('Target')
+ax.set_title('Scatter 3D Plot of Features in Pima Indians Diabetes Dataset')
+plt.show()

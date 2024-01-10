@@ -1,0 +1,19 @@
+import pandas as pd
+
+# Sample data
+data = {'coll': [1, 2, 3, 4, 7],
+        'c012': [4, 5, 6, 9, 5],
+        'c013': [7, 8, 12, 1, 11]}
+
+# Create a DataFrame
+df = pd.DataFrame(data)
+
+# Given columns to check
+columns_to_check = ['C014', 'coll']
+
+# Check if columns are present in the DataFrame
+for col in columns_to_check:
+    if col in df.columns:
+        print(f"{col} is present in DataFrame.")
+    else:
+        print(f"{col} is not present in DataFrame.")

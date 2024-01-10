@@ -1,0 +1,19 @@
+import numpy as np
+
+# Create a 2-dimensional array of size 2 x 3 with 4-byte integer elements
+array_2d = np.array([[1, 2, 3], [2, 3, 4]], dtype=np.int32)
+
+# Display the original NumPy array
+print("Original NumPy array:")
+print(array_2d)
+print("Type:", type(array_2d))
+
+# Specify the sequence to find
+sequence_to_find = np.array([2, 3], dtype=np.int32)
+
+# Count the number of occurrences of the specified sequence
+occurrences = np.sum(np.all(array_2d == sequence_to_find, axis=1))
+
+# Display the result
+print("Sequence:", ", ".join(map(str, sequence_to_find)))
+print("Number of occurrences of the said sequence:", occurrences)

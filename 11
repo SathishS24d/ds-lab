@@ -1,0 +1,30 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from sklearn.datasets import load_iris
+
+# Load Iris dataset
+iris = load_iris()
+iris_df = sns.load_dataset("iris")
+
+# a) Correlation and Scatter Plots
+sns.pairplot(iris_df, hue="species", markers=["o", "s", "D"])
+plt.suptitle("Pairplot of Iris Dataset")
+plt.show()
+
+# b) Histograms
+sns.histplot(iris_df, x="sepal_length", hue="species", kde=True)
+plt.title("Histogram of Sepal Length")
+plt.show()
+
+# c) Three-dimensional Plotting
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+
+ax.scatter(iris_df['sepal_length'], iris_df['sepal_width'], iris_df['petal_length'], c=pd.Categorical(iris_df['species']).codes, cmap='viridis', s=50)
+ax.set_xlabel('Sepal Length')
+ax.set_ylabel('Sepal Width')
+ax.set_zlabel('Petal Length')
+ax.set_title("3D Scatter Plot of Iris Dataset")
+
+plt.show()

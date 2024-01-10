@@ -1,0 +1,42 @@
+import pandas as pd
+import numpy as np
+from scipy.stats import skew, kurtosis
+
+# Load the Pima Indians Diabetes dataset (replace 'diabetes.csv' with the actual file path)
+diabetes_df = pd.read_csv('diabetes.csv')
+
+# Univariate Analysis
+
+# Frequency
+frequency = diabetes_df['Outcome'].value_counts()
+print("\nFrequency:")
+print(frequency)
+
+# Mean, Median, and Mode
+mean_value = diabetes_df.mean()
+median_value = diabetes_df.median()
+mode_value = diabetes_df.mode().iloc[0]
+print("\nMean:")
+print(mean_value)
+print("\nMedian:")
+print(median_value)
+print("\nMode:")
+print(mode_value)
+
+# Variance
+variance_value = diabetes_df.var()
+print("\nVariance:")
+print(variance_value)
+
+# Standard Deviation
+std_deviation_value = diabetes_df.std()
+print("\nStandard Deviation:")
+print(std_deviation_value)
+
+# Skewness and Kurtosis
+skewness_value = skew(diabetes_df['Glucose'])
+kurtosis_value = kurtosis(diabetes_df['Glucose'])
+print("\nSkewness:")
+print(skewness_value)
+print("\nKurtosis:")
+print(kurtosis_value)
